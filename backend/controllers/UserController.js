@@ -11,24 +11,24 @@ module.exports = class UserController {
 
     //validations
     if (!name) {
-      res.status(422).json({ message: "O nome e Obrigatorio" });
+      res.status(422).json({ message: "O nome e obrigatorio" });
       return;
     }
 
     if (!email) {
-      res.status(422).json({ message: "O email e Obrigatorio" });
+      res.status(422).json({ message: "O email e obrigatorio" });
       return;
     }
     if (!phone) {
-      res.status(422).json({ message: "O telefone e Obrigatorio" });
+      res.status(422).json({ message: "O telefone e obrigatorio" });
       return;
     }
     if (!password) {
-      res.status(422).json({ message: "A senha e Obrigatoria" });
+      res.status(422).json({ message: "A senha e obrigatoria" });
       return;
     }
     if (!confirmpassword) {
-      res.status(422).json({ message: "A confirmação de senha e Obrigatoria" });
+      res.status(422).json({ message: "A confirmação de senha e obrigatoria" });
       return;
     }
     if (password !== confirmpassword) {
@@ -65,11 +65,11 @@ module.exports = class UserController {
   static async login(req, res) {
     const { email, password } = req.body;
     if (!email) {
-      res.status(422).json({ message: "O email e Obrigatorio" });
+      res.status(422).json({ message: "O email e obrigatorio" });
       return;
     }
     if (!password) {
-      res.status(422).json({ message: "A senha e Obrigatoria" });
+      res.status(422).json({ message: "A senha e obrigatoria" });
       return;
     }
     const user = await User.findOne({ email: email });
@@ -107,7 +107,7 @@ module.exports = class UserController {
     const id = req.params.id;
     const user = await User.findById(id).select("-password");
     if (!user) {
-      res.status(422).json({ message: "Usuário não econtrado" });
+      res.status(422).json({ message: "Usuário não encontrado" });
       return;
     }
     res.status(200).json({ user });
@@ -123,12 +123,12 @@ module.exports = class UserController {
     }
 
     if (!name) {
-      res.status(422).json({ message: "O nome e Obrigatorio" });
+      res.status(422).json({ message: "O nome e obrigatorio" });
       return;
     }
 
     if (!email) {
-      res.status(422).json({ message: "O email e Obrigatorio" });
+      res.status(422).json({ message: "O email e obrigatorio" });
       return;
     }
     const userExists = await User.findOne({ email: email });
