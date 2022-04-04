@@ -126,6 +126,7 @@ module.exports = class UserController {
       res.status(422).json({ message: "O nome e obrigatorio" });
       return;
     }
+    user.name = name;
 
     if (!email) {
       res.status(422).json({ message: "O email e obrigatorio" });
@@ -137,6 +138,11 @@ module.exports = class UserController {
       return;
     }
     user.email = email;
+
+    if (image) {
+      const imageName = req.file.filename;
+      user.image = imageName;
+    }
     if (!phone) {
       res.status(422).json({ message: "O telefone e Obrigatorio" });
       return;
@@ -162,6 +168,7 @@ module.exports = class UserController {
       );
       res.status(200).json({
         message: "Usuário atualizado com sucesso",
+        data: updatedUser,
       });
     } catch (err) {
       res.status(500).json({ message: err });
